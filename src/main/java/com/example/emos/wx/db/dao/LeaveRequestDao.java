@@ -1,17 +1,11 @@
 package com.example.emos.wx.db.dao;
 
 import com.example.emos.wx.db.pojo.LeaveRequest;
+import org.apache.ibatis.annotations.Mapper;
 
+import java.util.HashMap;
+
+@Mapper
 public interface LeaveRequestDao {
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(LeaveRequest record);
-
-    int insertSelective(LeaveRequest record);
-
-    LeaveRequest selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(LeaveRequest record);
-
-    int updateByPrimaryKey(LeaveRequest record);
+    public int insert(HashMap param);
 }

@@ -1,39 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.emos.wx.db.dao.LeaveRequestDao">
-    <insert id="SubmitRequest" parameterType="HashMap" >
-      INSERT INTO tb_user
+    <insert id="insert" parameterType="HashMap" >
+      INSERT INTO leave_request
       SET
-      <if test="openId!=null">
-        open_id = #{openId},
+      <if test="employeeId!=null">
+        employee_id = #{employeeId},
       </if>
-      <if test="nickname!=null">
-        nickname = #{nickname},
+      <if test="reason!=null">
+        reason = #{reason},
       </if>
-      <if test="photo!=null">
-        photo = #{photo},
+      <if test="leaveType!=null">
+        leave_type = #{leaveType},
       </if>
-      <if test="name!=null">
-        name = #{name},
+      <if test="endDate!=null">
+        end_date=#{endDate},
       </if>
-      <if test="sex!=null">
-        sex = #{sex},
+      <if test="startDate!=null">
+        start_date = #{startDate},
       </if>
-      <if test="tel!=null">
-        tel = #{tel},
-      </if>
-      <if test="email!=null">
-        email=#{email},
-      </if>
-      <if test="hiredate!=null">
-        hiredate = #{hiredate},
-      </if>
-      role = #{role},
-      root = #{root},
-      <if test="deptName!=null">
-        dept_id = ( SELECT id FROM tb_dept WHERE dept_name = #{deptName} ),
-      </if>
-      status = #{status},
-      create_time = #{createTime}
+      status = 1
+
     </insert>
 </mapper>

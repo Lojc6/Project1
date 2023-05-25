@@ -4,23 +4,26 @@ package com.example.emos.wx.controller.form;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 @Data
 @ApiModel
 public class leave_requestForm {
 
-     private int employee_id;
 
-     private Date start_date;
 
-     private Date end_date;
+     private int employeeId;
 
-     private String leave_type;
+     private Date startdate;
+
+     private Date enddate;
+
+     private String leavetype;
 
      private String reason;
 
-     private Byte status;
+
 
 
 

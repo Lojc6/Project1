@@ -5,6 +5,7 @@ import cn.hutool.core.util.IdUtil;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
+import com.example.emos.wx.db.dao.LeaveRequestDao;
 import com.example.emos.wx.db.dao.TbUserDao;
 import com.example.emos.wx.db.pojo.MessageEntity;
 import com.example.emos.wx.db.pojo.TbUser;
@@ -37,6 +38,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private MessageTask messageTask;
+
+    @Autowired
+    private LeaveRequestDao leaveRequestDao;
 
     private String getOpenId(String code){
         String url="https://api.weixin.qq.com/sns/jscode2session";
@@ -126,5 +130,22 @@ public class UserServiceImpl implements UserService {
         HashMap map=userDao.searchUserSummary(userId);
         return map;
 
+    }
+
+    @Override
+    public int SubmitLeave(int id, Date creat, Date end, String leaveType, String reason) {
+
+        HashMap map=new HashMap<>();
+        map.put("employeeId",id);
+        map.put("startDate",creat);
+        map.put("endDate",end);
+        map.put("leaveType",leaveType);
+        map.put("reason",reason);
+
+
+        int i = leaveRequestDao.insert(map);
+
+
+        return i;
     }
 }

@@ -28,8 +28,8 @@
     <insert id="insert" parameterType="HashMap">
         INSERT INTO tb_user
         SET
-        <if test="employeeId!=null">
-            employee_id = #{employeeId},
+        <if test="openId!=null">
+            open_id = #{openId},
         </if>
         <if test="nickname!=null">
             nickname = #{nickname},
@@ -49,11 +49,8 @@
         <if test="email!=null">
             email=#{email},
         </if>
-        <if test="startDate!=null">
-            start_date = #{startDate},
-        </if>
-        <if test="endDate!=null">
-            end_date = #{endDate},
+        <if test="hiredate!=null">
+            hiredate = #{hiredate},
         </if>
         role = #{role},
         root = #{root},
