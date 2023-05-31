@@ -26,6 +26,8 @@ import java.util.concurrent.TimeUnit;
 
 @Component
 @Scope("prototype")//要用到多例,不然ThreadLocal读取数据会出问题,默认是singleton
+        //场景,前端发来的请求占一个线程,请求中包含token（不是真正的token,要到后端加密算法算出来的）,然后这个假token经过算法之后
+        //存取到ThreadLocal,这个当前线程的变量里面,
 public class OAuth2Filter extends AuthenticatingFilter {
     @Autowired
     private ThreadLocalToken threadLocalToken;
@@ -79,7 +81,7 @@ public class OAuth2Filter extends AuthenticatingFilter {
               return false;
         }
         try {
-            jwtUtil.verifierToken(token);
+            jwtUtil.verifierToken(token);//在生成token的时候会根据日期推算的,过期时间验证的时候就知道了。
         }catch (TokenExpiredException e){//令牌过期
           if (redisTemplate.hasKey(token)){
               //客户端的令牌过期,redis还存着则要更新令牌

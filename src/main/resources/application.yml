@@ -64,6 +64,9 @@ logging:
   pattern:
     console: "%d{HH:mm:ss}  %-5level  %msg%n"
 
+
+
+
 #JWT
 emos:
   jwt:

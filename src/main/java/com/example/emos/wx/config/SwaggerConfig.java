@@ -42,6 +42,7 @@ public class SwaggerConfig {
         List<ApiKey> apiKeyList=new ArrayList<>();
         apiKeyList.add(apiKey);
         docket.securitySchemes(apiKeyList);
+                       //计划
 
         //JWT在Swagger的作用域    别导错包 是这个springfox.documentation.service.AuthorizationScope;
         AuthorizationScope scope=new AuthorizationScope("global","accessEverything");

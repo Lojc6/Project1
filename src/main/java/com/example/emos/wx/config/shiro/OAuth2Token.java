@@ -13,10 +13,10 @@ public class OAuth2Token implements AuthenticationToken {
     @Override
     public Object getPrincipal() {
         return token;
-    }
+    }//获取身份
 
     @Override
     public Object getCredentials() {
         return token;
-    }
+    }//获取凭证
 }
