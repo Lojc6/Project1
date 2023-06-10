@@ -41,14 +41,14 @@ class EmosWxApiApplicationTests {
             MessageEntity message = new MessageEntity();
             message.setUuid(IdUtil.simpleUUID());
             message.setSenderId(0);
-            message.setSenderName("系统消息");
-            message.setMsg("这是第" + i + "条测试消息");
+            message.setSenderName("测试消息");
+            message.setMsg("测试："+i);
             message.setSendTime(new Date());
             String id=messageService.insertMessage(message);
 
             MessageRefEntity ref=new MessageRefEntity();
             ref.setMessageId(id);
-            ref.setReceiverId(40); //接收人ID
+            ref.setReceiverId(42); //接收人ID
             ref.setLastFlag(true);
             ref.setReadFlag(false);
             messageService.insertRef(ref);
