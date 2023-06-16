@@ -48,7 +48,7 @@ class EmosWxApiApplicationTests {
 
             MessageRefEntity ref=new MessageRefEntity();
             ref.setMessageId(id);
-            ref.setReceiverId(42); //接收人ID
+            ref.setReceiverId(45); //接收人ID
             ref.setLastFlag(true);
             ref.setReadFlag(false);
             messageService.insertRef(ref);
