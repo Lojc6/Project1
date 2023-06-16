@@ -1,0 +1,84 @@
+server:
+  tomcat:
+    uri-encoding: UTF-8  #编码信息
+    threads:   #配置线程
+      max: 200  #最大线程
+      min-spare: 30 #最小线程
+    connection-timeout: 5000ms #超时时间
+  port: 8080 #端口
+  servlet:
+    context-path: /emos-wx-api #访问路径
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/emos?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      username: root
+      password: 1234
+      initial-size: 8
+      max-active: 16
+      min-dile: 8
+      max-wait: 60000
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+
+
+  mail:
+    default-encoding: UTF-8
+    host: smtp.qq.com
+    username: 1748484325@qq.com
+    password: 646458999L@
+
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password: 1234
+    jedis: #redis数据源连接池
+      pool:
+        max-active: 1000  #最大上限连接
+        max-wait: 1ms
+        max-idle: 16
+        min-idle: 8
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/emos
+
+
+
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml #mapper路径
+  type-aliases-package: com.example.emos.wx.db.pojo #设置pojo包
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #设置日志输出
+    map-underscore-to-camel-case: true #支持驼峰命名
+
+logging:
+  level:
+    root: info
+    com.example.emos.wx.db.dao: warn
+  pattern:
+    console: "%d{HH:mm:ss}  %-5level  %msg%n"
+
+
+
+
+#JWT
+emos:
+  jwt:
+    secret: abc123456
+    expire: 5
+    cache-expire: 10
+
+  email:
+    system: lojc719@gmail.com
+    hr: lojc719@gmail.com
+  image-folder: D:/emos/image
+
+wx:
+  app-id: wx58761a18c450fcab
+  app-secret: 046911317c3b68ddcfa02d538b19bf28

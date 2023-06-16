@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.emos.wx.db.dao.LeaveRequestDao">
+    <insert id="insert" parameterType="HashMap" >
+      INSERT INTO leave_request
+      SET
+      <if test="employeeId!=null">
+        employee_id = #{employeeId},
+      </if>
+      <if test="reason!=null">
+        reason = #{reason},
+      </if>
+      <if test="leaveType!=null">
+        leave_type = #{leaveType},
+      </if>
+      <if test="endDate!=null">
+        end_date=#{endDate},
+      </if>
+      <if test="startDate!=null">
+        start_date = #{startDate},
+      </if>
+      status = 1
+
+    </insert>
+</mapper>
